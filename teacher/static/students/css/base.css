@@ -1,0 +1,132 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+    list-style: none;
+    text-decoration: none;
+}
+
+.navbar-nav li {
+    padding-right: 30px;
+}
+
+.nav-link {font-size: 1.1em !important;}
+
+ body{
+    background-image: url(../img/back.jpg);
+    height: 100vh;
+    background-size: contain; /* Полное заполнение контейнера */
+    /*background: rgb(220, 235, 208);*/
+    color: rgb(247, 242, 242);
+    background-size: cover;
+    background-position: center;
+    text-decoration: none;
+}
+
+header{
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: rgb(251, 252, 251);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 5%; /*0 сверху и снизу, 8 справа и слева отступы */
+    box-shadow: 0 10px 10px rgb(151, 204, 171); /* Тень для меню: 0-смещение по горизонтали, 5пкс - по вертикали, 10 пкс-размытие, черный цвет  */
+    text-decoration: none;
+    transition: all .6s ease;
+}
+
+header .logo{
+    font-size: 30px;
+    font-weight: 700;
+    color: black;
+    text-decoration: none;
+}
+
+header .logo:hover{
+    transform: scale(1.05);
+    transition: all .6s ease;
+}
+
+header nav ul li{
+    position: relative;
+    float: left;
+}
+
+header nav ul li a{
+    padding: 15px;
+    color: black;
+    font-size: 20px;
+    display: block;
+    text-decoration: none;
+}
+
+header nav ul li a:hover{
+    color: rgb(10, 101, 45);
+    transform: scale(1.05);
+    transition: all .6s ease;
+}
+
+
+
+/* aside{
+    float: left;
+    background: rgb(62, 219, 190);
+    width: 20%;
+    padding: 2.5%;
+    height: 100vh;
+    color: blue;
+    border-right: 5px solid #4d4d4d;
+    text-decoration: none;
+}
+
+aside ul {list-style: none}
+aside ul li{
+    color: #fff;
+    display: block;
+    margin-top: 20px;
+    transition: all .6s ease;
+    text-decoration: none;
+}
+
+aside ul li:hover, aside ul a:hover{
+    color: #eb5959;
+    text-decoration: none;
+    transform: scale(1.05);
+}*/
+
+
+
+main .features{
+    float: center;
+    color: #fdfbfb;
+    margin-top: 100px;
+    text-align: center;
+    
+}
+
+main .features h1 {font-size: 50px;}
+main .features p {max-width: 400px; margin: 20px auto}
+
+.alert-warning{
+    float:center;
+    clear: both;
+    
+    margin: 20px 34%;
+    text-align: center;
+}
+
+.logo-wrapper{
+    float: left;
+    padding: 0 10%;
+    
+    height: auto; /* Доверьтесь автоматике */
+    object-fit: contain; /* Исключаем искажения пропорций */
+}
+
+.decoration > p{
+    float: right;
+}

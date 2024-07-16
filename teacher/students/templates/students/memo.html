@@ -1,0 +1,17 @@
+{% extends "students/base.html" %}
+
+{% block title%}Памятки{% endblock %}
+
+{% block content%}
+        <h1>Для вас, ребята! Памятки</h1>
+        {% for el in list_of_memos%}
+        <div class="alert alert-warning">
+            <h3>{{el.title }}</h3>
+            <p>{{ el.full_text}}</p>
+            <p>{{ el.date}}</p>
+
+        </div>
+    {% endfor%}
+    
+
+{% endblock %}

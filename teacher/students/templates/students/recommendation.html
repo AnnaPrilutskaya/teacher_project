@@ -1,0 +1,16 @@
+{% extends "students/base.html" %}
+
+{% block title%}Советы и рекомендации{% endblock %}
+
+{% block content%}
+        <h1>Для вас, ребята! Советы и рекомендации</h1>
+        {% for el in list_of_recommendations%}
+        <div class="alert alert-warning">
+            <h3>{{el.title }}</h3>
+            <p>{{ el.full_text}}</p>
+
+        </div>
+    {% endfor%}
+     
+
+{% endblock %}

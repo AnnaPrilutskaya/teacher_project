@@ -1,0 +1,12 @@
+{% extends "students/base.html" %}
+
+{% block title%}{{ article.title }}{% endblock %}
+
+{% block content%}
+        <h1>Для вас, ребята!</h1>
+        <h1>{{ article.title }}</h1>
+        <p>{{ article.full_text}}</p>
+
+     
+
+{% endblock %}
