@@ -1,0 +1,14 @@
+{% extends "students/base.html" %}
+
+{% block title%}Мастерская учителя{% endblock %}
+
+{% block content%}
+        <h1>Мастерская учителя</h1>
+        <p>Какой-то текст</p>
+        
+        <a href="{% url 'activities_outside_of_school' %}" class="btn btn-warning">Внеурочная деятельность</a>
+        <a href="#" class="btn btn-warning">Измерительные материалы</a>
+        <a href="#" class="btn btn-warning">Уроки</a>
+        
+       
+{% endblock %}

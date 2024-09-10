@@ -1,0 +1,17 @@
+{% extends "students/base.html" %}
+
+
+{% block title%}Внеурочная деятельность{% endblock %}
+
+{% block content%}
+        <h1>Внеурочная деятельность</h1>
+        <p>Какой-то текст</p>
+        {% for el in list_of_activitives%}
+            <div class="alert alert-warning">
+                <h3>{{el.title }}</h3>
+                <p>{{ el.text }}</p>
+                <a href="el.text.url" class="btn btn-warning">Смотреть</a>
+            </div>
+        {% endfor%}
+        
+{% endblock %}
