@@ -1,116 +1,97 @@
+@font-face {
+    font-family: 'Murs Gothic';
+    src: url('/static/students/font/MursGothic-WideDark.ttf') format('ttf');
+    font-weight: 400; /* Regular */
+    font-style: normal;
+  }
+
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: sans-serif;
+    font-family: 'Murs Gothic', sans-serif;
     list-style: none;
     text-decoration: none;
 }
 
-.navbar-nav li {
-    padding-right: 30px;
+/*меню*/
+
+.navbar {
+    background: none !important; /* Убираем фон */
+    box-shadow: none !important; /* Убираем тень (если есть) */
+    border-bottom: 1px solid #ddd; /* Линия снизу */
+    padding-left: 20px; /* Отступ слева */
+    padding-right: 20px; /* Отступ справа */
+    font-family: 'Murs Gothic', sans-serif;
+    letter-spacing: 0.5px; /* Опционально: регулировка межбуквенного интервала */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Легкая тень для меню */
 }
 
-.nav-link {font-size: 1.1em !important;}
-
- body{
-    background-image: url(../img/back.jpg);
-    height: 100vh;
-    background-size: contain; /* Полное заполнение контейнера */
-    /*background: rgb(220, 235, 208);*/
-    color: rgb(247, 242, 242);
-    background-size: cover;
-    background-position: center;
-    text-decoration: none;
+.navbar-brand {
+    font-weight: 700; /* Жирное начертание для ФИО */
+    font-size: 1.2rem;
+    text-transform: uppercase; /* Все буквы заглавные */
+    color: #333 !important; /* Цвет текста */
 }
 
-header{
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    background: rgb(251, 252, 251);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0 5%; /*0 сверху и снизу, 8 справа и слева отступы */
-    box-shadow: 0 10px 10px rgb(151, 204, 171); /* Тень для меню: 0-смещение по горизонтали, 5пкс - по вертикали, 10 пкс-размытие, черный цвет  */
-    text-decoration: none;
-    transition: all .6s ease;
+.nav-link {
+    font-weight: 400;
+    font-size: 15px;
+    text-transform: uppercase;
+    color: #555 !important;
+    margin: 0 10px;
+    transition: color 0.3s ease;
 }
 
-header .logo{
-    font-size: 30px;
+.nav-link:hover {
+    color: #000 !important; /* Цвет при наведении */
+}
+
+/* Стили для мобильного меню */
+.navbar-toggler {
+    border: none;
+    padding: 0.5rem;
+}
+
+.navbar-toggler:focus {
+    box-shadow: none;
+}
+
+
+/* Активный пункт меню не работает пока что*/
+/*.nav-item.active .nav-link {
     font-weight: 700;
-    color: black;
-    text-decoration: none;
-}
-
-header .logo:hover{
-    transform: scale(1.05);
-    transition: all .6s ease;
-}
-
-header nav ul li{
-    position: relative;
-    float: left;
-}
-
-header nav ul li a{
-    padding: 15px;
-    color: black;
-    font-size: 20px;
-    display: block;
-    text-decoration: none;
-}
-
-header nav ul li a:hover{
-    color: rgb(10, 101, 45);
-    transform: scale(1.05);
-    transition: all .6s ease;
-}
-
-
-
-/* aside{
-    float: left;
-    background: rgb(62, 219, 190);
-    width: 20%;
-    padding: 2.5%;
-    height: 100vh;
-    color: blue;
-    border-right: 5px solid #4d4d4d;
-    text-decoration: none;
-}
-
-aside ul {list-style: none}
-aside ul li{
-    color: #fff;
-    display: block;
-    margin-top: 20px;
-    transition: all .6s ease;
-    text-decoration: none;
-}
-
-aside ul li:hover, aside ul a:hover{
-    color: #eb5959;
-    text-decoration: none;
-    transform: scale(1.05);
+    color: #000 !important;
 }*/
 
 
 
-main .features{
+ body{
+    /* background-image: url(../img/back.jpg);*/
+    height: 100vh;
+    background-size: contain; /* Полное заполнение контейнера */
+    /*background: rgb(220, 235, 208);*/
+    color: rgb(21, 20, 20);
+    background-size: cover;
+    background-position: center;
+    text-decoration: none;
+    font-family: 'Murs Gothic', sans-serif;
+}
+
+/*features - отвечает за контент, если убрать - будет не поцентру, а справа всё*/
+/*main .features{
     float: center;
-    color: #fdfbfb;
+    color: #0b0b0b;
     margin-top: 100px;
     text-align: center;
     
 }
 
 main .features h1 {font-size: 50px;}
-main .features p {max-width: 400px; margin: 20px auto}
+main .features p {max-width: 400px; margin: 20px auto}*/
 
+/*следующие 2 блока отвечают за расположение фотки*/
 .alert-warning{
     float:center;
     clear: both;
@@ -120,13 +101,81 @@ main .features p {max-width: 400px; margin: 20px auto}
 }
 
 .logo-wrapper{
-    float: left;
-    padding: 0 10%;
-    
-    height: auto; /* Доверьтесь автоматике */
-    object-fit: contain; /* Исключаем искажения пропорций */
+    position: absolute;
+    width: 780px;
+    height: 1122px;
+    left: 1066px;
+    top: 159px;
 }
 
-.decoration > p{
-    float: right;
+.page-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    font-family: 'Murs Gothic', sans-serif;
 }
+
+.article-body {
+    font-size: 1.1rem;
+    margin-bottom: 1.5rem;
+    text-align: justify;
+    font-family: 'Murs Gothic', sans-serif;
+  }
+
+/*Блоки для раскрытия измеретильных материалов на неведению мыши*/
+.post-container {
+    max-width: 800px;
+    margin: 20px auto;
+    font-family: 'Murs Gothic', sans-serif;
+}
+
+.post-header {
+    background-color: rgba(193, 200, 41, 0.47);;
+    color: white;
+    padding: 15px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.post-header:hover {
+    background-color: #aeb359;
+}
+
+.post-content {
+    max-height: 0;
+    overflow: hidden;
+    background-color: #f5f7fa;
+    transition: max-height 0.3s ease;
+    border-radius: 0 0 5px 5px;
+}
+
+/* Раскрытие при наведении на контейнер */
+.post-container:hover .post-content {
+    max-height: 300px; 
+}
+
+.post-description {
+    padding: 15px;
+    line-height: 1.6;
+}
+
+.download-btn {
+    display: inline-block;
+    background-color: #37bc9b;
+    color: white;
+    padding: 10px 20px;
+    margin: 15px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+
+.download-btn:hover {
+    background-color: #2e9e8a;
+}
+
+

@@ -1,6 +1,6 @@
-from django.shortcuts import render, render_to_response
+from django.shortcuts import render
 from django.template import Template, RequestContext
-from .models import Activities, Documents
+from .models import Activities, Documents, Measuring_materials
 
 
 def workshop(request):
@@ -18,4 +18,12 @@ def activities_outside_of_school(request):
     #text = Activities.objects.get(id=1).documents.all()
     template = 'workshop/activities.html'
     return render(request, template, {'list_of_activitives': activitives}) 
+
+def measuring_materials(request):
+    #activitives = Activities.objects.prefetch_related('text')
+    measuring_materials = Measuring_materials.objects.all()
+    #text = Documents.objects.select_related('text')
+    #text = Activities.objects.get(id=1).documents.all()
+    template = 'workshop/measuring_materials.html'
+    return render(request, template, {'list_of_measuring_materials': measuring_materials}) 
     

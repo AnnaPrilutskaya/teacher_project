@@ -9,8 +9,11 @@
         {% for el in list_of_activitives%}
             <div class="alert alert-warning">
                 <h3>{{el.title }}</h3>
-                <p>{{ el.text }}</p>
-                <a href="el.text.url" class="btn btn-warning">Смотреть</a>
+                {% for document in el.text.all %}
+                    <li>
+                        <a href="{{ document.word.url }}" class="btn btn-warning" target="_blank">{{ document.title }}</a>
+                    </li>
+                {% endfor %}
             </div>
         {% endfor%}
         

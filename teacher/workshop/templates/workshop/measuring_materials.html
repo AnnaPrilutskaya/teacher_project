@@ -1,0 +1,40 @@
+{% extends "students/base.html" %}
+
+
+{% block title%}Внеурочная деятельность{% endblock %}
+
+{% block content%}
+        <h1>Измерительные материалы</h1>
+        <p>Я понимаю, что будущее за компетентностным подходом в образовании. Однако  передо мной стоит противоречие - это несоответствие целей компетентностного подхода и оценки конечных результатов. В формировании компетентностей главным является деятельностный подход, а в оценке конечных результатов акцент делается на знания. Деятельностный подход и предполагает использование на уроках технологии проблемного диалога, а, значит, у ребят формируются ключевые компетенции. 
+            Но есть ещё проблема, с которой я сталкиваюсь во время работы – это отсутствие измерителей, тестов для определения уровня формирования ключевых компетентностей у младших школьников. Чтобы отслеживать данный уровень использую личные наработки, методики, рекомендованные психологами, наблюдения. Буду рада, если мои материалы могут кому-то пригодиться ещё, и признательна Вашим советам по данному вопросу
+        </p>
+
+
+
+        {% for el in list_of_measuring_materials%}
+            <div class="post-container">
+                <div class="post-header">{{el.title}}</div>
+                <div class="post-content">
+                    <div class="post-description">
+                        <p>{{el.description}}</p>
+                        {% for document in el.materials.all %}
+                            <li>
+                                <a href="{{ document.document.url }}" class="download-btn">{{ document.title }}</a>
+                            </li>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        {% endfor%}
+
+        <script>
+            // Для плавной работы на мобильных устройствах
+            document.querySelectorAll('.post-header').forEach(header => {
+                header.addEventListener('click', function() {
+                    const content = this.nextElementSibling;
+                    content.style.maxHeight = content.style.maxHeight ? null : content.scrollHeight + 'px';
+                });
+            });
+        </script>
+
+{% endblock %}
