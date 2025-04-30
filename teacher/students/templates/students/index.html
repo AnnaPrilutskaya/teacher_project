@@ -5,12 +5,15 @@
 
 {% block content %}
 
-    <div class="logo-wrapper">
+    <div class="welcome-part">
       <!--<img src="{% static 'students/img/face.jpg' %}" width="500" height="500" alt="logo">-->
-      <img src="{% static 'students/img/second_face.png' %}" width="400" height="500" alt="logo">
-    </div>
-    <div class="article-body">
-        <p>ДАВАЙТЕ УЧИТЬСЯ ВМЕСТЕ!
-        </p>
+      <div id = "left-column">
+        <p id="main-header">ДАВАЙТЕ УЧИТЬСЯ ВМЕСТЕ!</p>
+        <div id = "main-description">
+          <p id = "main-description-text">Я - Светалана Николаевна Прилуцкая, учитель начальных классов. Очень рада видеть Вас на моей странице!</p>
+        </div>
+      </div>
+      <img id = 'main-photo' src="{% static 'students/img/mamAnyaTest.png' %}" alt="logo">
+
     </div>
 {% endblock %}

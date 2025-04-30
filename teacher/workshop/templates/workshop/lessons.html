@@ -1,0 +1,47 @@
+{% extends "students/base.html" %}
+
+
+{% block title%}Уроки{% endblock %}
+
+{% block content%}
+        <h1>Уроки</h1>
+        <p>Описание
+        </p>
+
+
+
+        {% for el in list_of_lessons%}
+            <div class="post-container">
+                <div class="post-header">{{el.title}}</div>
+                <div class="post-content">
+                    <div class="post-description">
+                        <p class="header-content"> <b>Предмет: </b> {{el.subject}}</p>
+                        <p class="header-content"> <b>Класс: </b>{{el.class_number}}</p>
+                        <p class="header-content"> <b>Программа: </b>{{el.program}}</p>
+                        <p class="header-content"> <b>Тема: </b>{{el.topic}}</p>
+                        <p class="header-content"> <b>Тип урока: </b>{{el.lesson_type}}</p>
+                        <p class="header-content"> <b>Цель: </b>{{el.goal}}</p>
+                        <p class="header-content"> <b>Задачи: </b>{{el.tasks}}</p>
+                        <p class="header-content"> <b>Оборудование: </b>{{el.equipment}}</p>
+                        <p class="header-content"> {{el.content|safe}}</p>
+                        {% for file in el.files.all %}
+                            <li>
+                                <a href="{{ file.file.url }}" class="download-btn">{{ file.get_original_filename }}</a>
+                            </li>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        {% endfor%}
+
+        <script>
+            // Для плавной работы на мобильных устройствах
+            document.querySelectorAll('.post-header').forEach(header => {
+                header.addEventListener('click', function() {
+                    const content = this.nextElementSibling;
+                    content.style.maxHeight = content.style.maxHeight ? null : content.scrollHeight + 'px';
+                });
+            });
+        </script>
+
+{% endblock %}

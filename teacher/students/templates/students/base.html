@@ -25,9 +25,24 @@
               <li class="nav-item active">
                 <a href="{% url 'home' %}" class="nav-link">ОБО МНЕ</a>
               </li>
-              <li class="nav-item">
-                <a href="{% url 'workshop' %}" class="nav-link">МАСТЕРСКАЯ УЧИТЕЛЯ</a>
+
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown">
+                  МАСТЕРСКАЯ УЧИТЕЛЯ
+                </a>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="{% url 'activities_outside_of_school' %}">ВНЕУРОЧНАЯ ДЕЯТЕЛЬНОСТЬ</a></li>
+                  <li><a class="dropdown-item" href="{% url 'measuring_materials' %}">ИЗМЕРИТЕЛЬНЫЕ МАТЕРИАЛЫ</a></li>
+                  <li><a class="dropdown-item" href="{% url 'lessons' %}">УРОКИ</a></li>
+                </ul>
               </li>
+
+              <!--<li class="nav-item">
+                <a href="{% url 'workshop' %}" class="nav-link">МАСТЕРСКАЯ УЧИТЕЛЯ</a>
+              </li>-->
+
+
+
               <li class="nav-item">
                 <a href="{% url 'student' %}" class="nav-link">ДЛЯ ВАС, РЕБЯТА!</a>
               </li>
@@ -39,8 +54,7 @@
       </div> 
     </nav>
     
-    <main class="page-content">
-        {% block content%}{% endblock %}
-    </main>
+    {% block content%}{% endblock %}
+
   </body>
 </html> 

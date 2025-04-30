@@ -9,34 +9,9 @@
             
             Эта страничка для вас! Она содержит интересную и полезную информацию.
             </p>
-        <div id="list-example" class="list-group">
-            <a class="list-group-item list-group-item-action" href="#list-item-1">Памятки</a>
-            <a class="list-group-item list-group-item-action" href="#list-item-2">Советы и рекомендации</a>
-        </div>
-        <div data-bs-spy="scroll" data-bs-target="#list-example" data-bs-offset="0" class="scrollspy-example" tabindex="0">
-            <h4 id="list-item-1">Памятки</h4>
-            {% for el in new_mem%}
-                <div class="alert alert-warning">
-                    <h3>{{el.title }}</h3>
-                    <p>{{ el.full_text}}</p>
-                </div>
-            {% endfor%}
-            <h4 id="list-item-2">Советы и рекомендации</h4>
-            {% for el in new_recom%}
-                <div class="alert alert-warning">
-                    <h3>{{el.title }}</h3>
-                    <p>{{ el.full_text}}</p>
-                </div>
-            {% endfor%}
-        </div>
+        
         <a href="{% url 'memo' %}" class="btn btn-warning">Памятки</a>
         <a href="{% url 'recommendation' %}" class="btn btn-warning">Советы и рекомендации</a>
-        {% for el in article%}
-            <div class="alert alert-warning">
-                <h3>{{el.title }}</h3>
-                <p>{{ el.anons}}</p>
-                <a href="{% url 'student-detail' el.id %}" class="btn btn-warning">Смотреть</a>
-            </div>
-        {% endfor%}
+        
 
 {% endblock %}

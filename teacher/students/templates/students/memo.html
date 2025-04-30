@@ -4,14 +4,24 @@
 
 {% block content%}
         <h1>Для вас, ребята! Памятки</h1>
-        {% for el in list_of_memos%}
-        <div class="alert alert-warning">
-            <h3>{{el.title }}</h3>
-            <p>{{ el.full_text}}</p>
-            <p>{{ el.date}}</p>
-
-        </div>
-    {% endfor%}
     
-
+        {% for el in list_of_memos%}
+            <div class="post-container">
+                <div class="post-header">{{el.title}}</div>
+                <div class="post-content">
+                    <div class="post-description">
+                        <p class="header-content"> {{el.content|safe}}</p>
+                    </div>
+                </div>
+            </div>
+        {% endfor%}
+        <script>
+            // Для плавной работы на мобильных устройствах
+            document.querySelectorAll('.post-header').forEach(header => {
+                header.addEventListener('click', function() {
+                    const content = this.nextElementSibling;
+                    content.style.maxHeight = content.style.maxHeight ? null : content.scrollHeight + 'px';
+                });
+            });
+        </script>
 {% endblock %}

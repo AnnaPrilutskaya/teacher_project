@@ -1,4 +1,6 @@
 from django.db import models
+from ckeditor.fields import RichTextField
+
 
 class Articles(models.Model):
     title = models.CharField('Название', max_length=50)
@@ -15,8 +17,7 @@ class Articles(models.Model):
 
 class Memos(models.Model):
     title = models.CharField('Название', max_length=50)
-    full_text = models.TextField('Текст')
-    date = models.DateTimeField('Дата публикации')
+    content = RichTextField("Текст", blank=True, null=True)
 
     def __str__(self):
         return self.title
