@@ -4,19 +4,29 @@ from ckeditor.fields import RichTextField
 
 class Documents(models.Model):
     """Класс тегов."""
-    '''word = models.CharField(max_length=200,
-                            verbose_name='Текстовый документ',
-                            unique=True)'''
-    title = models.CharField('Название', max_length=50, default='name') 
-    word = models.FileField(upload_to='books/%Y-%m-%d/')
-
-    # Не знаю, писать этот метод тут или в Activities
-    '''def display_text_file(self):
-        with open(self.word.path) as fp:
-            return fp.read().replace('\n', '<br>')'''
-        
+    
+    activity = models.ForeignKey(
+        'Activities',
+        on_delete=models.CASCADE,
+        related_name='files',
+        null=True,  
+        blank=True
+    )
+    file = models.FileField(upload_to='books/%Y-%m-%d/', null=True, blank=True)
+    original_name = models.CharField(max_length=255, blank=True, null=True, editable=False)
+    
+    def save(self, *args, **kwargs):
+        if not self.original_name and self.file:  # Сохраняем оригинальное имя при первом сохранении
+            self.original_name = self.file.name
+        super().save(*args, **kwargs)
+    
+    def get_original_filename(self):
+        return os.path.basename(self.original_name) if self.original_name else "Файл"
+    
     def __str__(self):
-        return self.title
+        return self.get_original_filename()
+
+    
 
     class Meta:
         verbose_name = 'Материал к разделу внеурочная деятельность'
@@ -24,10 +34,7 @@ class Documents(models.Model):
 
 class Activities(models.Model):
     title = models.CharField('Название', max_length=50)
-    text = models.ManyToManyField(Documents, verbose_name='Текстовые документы', related_name='Acti', blank=True, null=True)
-    '''music = 
-    presentation = 
-    video = '''
+    content = RichTextField("Текст с форматированием", blank=True, null=True)
 
     def __str__(self):
         return self.title
@@ -39,11 +46,27 @@ class Activities(models.Model):
 
 class Documents_for_measuring_materials(models.Model):
     """Класс тегов."""
-    title = models.CharField('Название', max_length=50, default='name') 
-    document = models.FileField(upload_to='books/%Y-%m-%d/')
-        
+
+    measuring_material = models.ForeignKey(
+        'Measuring_materials', 
+        on_delete=models.CASCADE, 
+        related_name='files',
+        null=True,  
+        blank=True
+    )
+    file = models.FileField(upload_to='books/%Y-%m-%d/', null=True, blank=True)
+    original_name = models.CharField(max_length=255, blank=True, null=True, editable=False)
+    
+    def save(self, *args, **kwargs):
+        if not self.original_name and self.file:  # Сохраняем оригинальное имя при первом сохранении
+            self.original_name = self.file.name
+        super().save(*args, **kwargs)
+    
+    def get_original_filename(self):
+        return os.path.basename(self.original_name) if self.original_name else "Файл"
+    
     def __str__(self):
-        return self.title
+        return self.get_original_filename()
 
     class Meta:
         verbose_name = 'Материал к разделу измерительные материалы'
@@ -52,10 +75,7 @@ class Documents_for_measuring_materials(models.Model):
 class Measuring_materials(models.Model):
     title = models.CharField('Название', max_length=50)
     description = models.CharField('Описание', max_length=1000, null=True, blank=True)
-    materials = models.ManyToManyField(Documents_for_measuring_materials,
-                                       verbose_name='Материалы',
-                                       related_name='Measuring',
-                                       blank=True, null=True)
+    
     
     def __str__(self):
         return self.title

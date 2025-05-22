@@ -17,20 +17,36 @@
     font-style: normal;
   }
 
+@font-face {
+    font-family: 'Golos Text_Regular';
+    src: url('/static/students/font/Golos-Text-Regular.woff') format('woff');
+    font-weight: 400; /* Regular */
+    font-style: normal;
+  }
+
+@font-face {
+    font-family: 'Golos Text_Bold';
+    src: url('/static/students/font/Golos-Text-Bold.woff') format('woff');
+    font-weight: 400; /* Regular */
+    font-style: normal;
+  }
+
 /*меню*/
 .navbar {
-    background: none !important; /* Убираем фон */
+    /*background: none !important; /* Убираем фон */
+    background-color: white;
     box-shadow: none !important; /* Убираем тень (если есть) */
     border-bottom: 1px solid #ddd; /* Линия снизу */
-    padding-left: 20px; /* Отступ слева */
-    padding-right: 20px; /* Отступ справа */
+    padding-left: 40px; /* Отступ слева */
+    padding-right: 40px; /* Отступ справа */
     letter-spacing: 0.5px; /* Опционально: регулировка межбуквенного интервала */
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Легкая тень для меню */
+    height: 62px; /* Примерная высота меню */
 }
 
 .navbar-brand {
     font-weight: 700; /* Жирное начертание для ФИО */
-    font-size: 1.2rem;
+    font-size: 1.3rem;
     text-transform: uppercase; /* Все буквы заглавные */
     color: #333 !important; /* Цвет текста */
     font-family: 'Inter black', sans-serif;
@@ -38,17 +54,139 @@
 
 .nav-link {
     font-weight: 400;
-    font-size: 15px;
+    font-size: 0.9vw;
     text-transform: uppercase;
     color: #555 !important;
     margin: 0 10px;
-    transition: color 0.3s ease;
+    transition: all 0.15s ease; /* Уменьшил время здесь тоже */
     font-family: "Inter regular", sans-serif;
+    display: inline-block;
+  
 }
 
 .nav-link:hover {
     color: #000 !important; /* Цвет при наведении */
 }
+
+/* Мобильное меню */
+@media (max-width: 992px) {
+  .navbar-collapse {
+    position: fixed;
+    top: 56px;
+    left: 0;
+    right: 0;
+    background: white;
+    padding: 0 20px;
+    box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+    z-index: 1000;
+    max-height: calc(100vh - 56px);
+    overflow-y: auto;
+  }
+  
+  .navbar-nav {
+    padding: 10px 0;
+  }
+  
+  .nav-link, .dropdown-item {
+    font-size: 16px !important;
+    padding: 12px 0 !important;
+  }
+  
+  .dropdown-menu {
+    background: transparent !important;
+    border: none !important;
+    padding-left: 15px;
+  }
+  
+  .dropdown-item {
+    color: #333 !important;
+  }
+  
+}
+
+.navbar-nav .nav-item {
+  border-radius: 4px; /* Скругление углов */
+  transition: background-color 0.15s;
+}
+
+
+/* Оранжевый фон при наведении на пункт */
+.navbar-nav .nav-item:hover {
+  background-color: rgba(255, 102, 0, 0.1); /* Прозрачный оранжевый */
+}
+
+/* Базовые стили для выпадающего меню */
+.nav-item.dropdown {
+  position: relative; /* Важно для позиционирования выпадающего меню */
+}
+
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    background: white;
+    min-width: 200px;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+    border-radius: 4px;
+    z-index: 1000;
+    top: 100%; /* Располагается прямо под пунктом меню */
+    margin-top: 15px; /* Ключевое изменение - добавляем отступ сверху */
+    max-width: 320px; /* Фиксированная максимальная ширина */
+    width: auto; /* Ширина по содержимому, но не более max-width */
+    white-space: normal; /* Разрешаем перенос текста */
+    overflow-wrap: break-word; /* Перенос длинных слов */
+    background-color: rgba(255, 255, 255, 0.98); /* Полупрозрачная плашка */
+    backdrop-filter: blur(10px); /* Эффект размытия */
+  }
+
+
+.dropdown:hover .dropdown-menu {
+    display: block;
+  }
+
+/* Делаем всю область пункта меню интерактивной */
+.nav-item.dropdown:hover .dropdown-menu {
+  display: block;
+}
+
+/* Для Bootstrap добавляем это */
+.navbar .dropdown-menu {
+  margin-top: 0; /* Убираем отступ между меню и пунктом */
+}
+  
+.dropdown-item {
+    padding: 8px 13px;
+    display: block;
+    color: #333;
+    font-family: "Inter regular", sans-serif;
+    font-size: 0.9vw;
+  }
+  
+.dropdown-item:hover {
+    background: #f8f9fa;
+  }
+
+
+  
+.dropdown-divider {
+    border-top: 1px solid #eee;
+    margin: 5px 0;
+  }
+
+
+/* Адаптация для мобильных */
+/*@media (max-width: 991.98px) {
+  .navbar-nav .nav-item {
+      margin: 2px 0;
+      border-radius: 0;
+      transition: background-color 0.1s ease; 
+  }
+  
+  .navbar-nav .nav-item:hover {
+      background-color: rgba(255, 102, 0, 0.1);
+  }
+}*/
+
+
 
 #left-column{
   display: flex;
@@ -70,6 +208,44 @@
   margin-left: 5%;
 }
 
+html {
+  scroll-behavior: smooth; /* Добавляет плавность всем прокруткам на странице */
+}
+
+#buttons{
+  flex: 1;
+  margin-top: 65px;
+}
+
+#scroll-button1 {
+  padding: 3% 7%;
+  background-color: #7C6B59;
+  color: white;
+  border: none;
+  border-radius: 32px;
+  cursor: pointer;
+  margin-right: 5%; 
+  font-family: 'Murs Gothic', sans-serif ;
+  font-size: 1.5vw;
+  border: 4px solid #7C6B59;
+  text-decoration: none;
+}
+#scroll-button2 {
+  padding: 3% 7%;
+  color: #7C6B59;
+  border: 4px solid #7C6B59;
+  border-radius: 32px;
+  cursor: pointer;
+  margin-right: 5%; 
+  font-family: 'Murs Gothic', sans-serif ;
+  font-size: 1.5vw;
+  text-decoration: none;
+}
+
+#target-section {
+  scroll-margin-top: 60px; /* Высота вашего меню + доп. отступ */
+}
+
 #main-header{
   font-family: 'Murs Gothic', sans-serif ;
   font-size: 7.5vw;
@@ -77,6 +253,7 @@
   line-height: 8vw;
   letter-spacing: 0%;
   color: rgb(124, 107, 89);
+  margin-bottom: -0.28em;
 
 }
 
@@ -100,50 +277,222 @@
 }
 
 #main-description {
+    margin-top: 40px;
     width: 85%;
     min-height: 150px;
     max-height: 250px;
     background: rgba(251, 211, 146, 0.55);
     border-radius: 30px;
     flex: 1;
+    margin-bottom: 0;
 }
 #main-description-text {
-  font-family: Arial, sans-serif ;
-  font-weight: bold;
-  font-size: 1.5vw;
+  padding: 3% 4.5%;
+  font-family: "Inter regular", sans-serif;
+  /*font-weight: bold;*/
+  font-size: 1.7vw;
   margin: 2%;
 }
 
-/* Базовые стили для выпадающего меню */
-.dropdown-menu {
-    display: none;
-    position: absolute;
-    background: white;
-    min-width: 200px;
-    box-shadow: 0 8px 16px rgba(0,0,0,0.1);
-    border-radius: 4px;
-    z-index: 1000;
+#about-description {
+  margin-right: 5%;
+  margin-left: 5%;
+  margin-top: 70px; /*отступ сверху*/
+  width: 90%;
+  height: 20%;
+  background: rgba(251, 211, 146, 0.55);
+  border-radius: 30px;
+}
+#about-description-text {
+  padding: 2.5% 1.5%;
+  font-family: Arial, sans-serif ;
+  font-size: 2.3vw;
+  margin: 2%;
+  font-family: "Inter regular", sans-serif;
+}
+
+.about-part {
+  display: flex;          /* Включаем flex-расположение */
+  flex-direction: row;    /* Элементы в строку */
+  align-items: flex-start; /* Выравнивание по верху */
+  gap: 4%;             /* Отступ между фото и текстом */
+  flex-wrap: wrap;
+  margin-top: 0;
+  margin-right: 5%;
+  margin-left: 5%;
+}
+
+.about-left-column {
+  display: flex;
+  flex-direction: column; /* Главная ось вертикальна */
+  flex: 1;
+}
+
+#about-left-text{
+  flex: 1;
+  margin-top: 40px;
+  width: 100%;
+  min-height: 250px;
+  max-height: 400px;
+  background: rgba(251, 211, 146, 0.55);
+  border-radius: 30px;
+  flex: 1;
+  margin-bottom: 0;
+}
+
+#about-left-years-text-header{
+  flex: 1;
+  padding: 3.5% 3%;
+  padding-bottom: 0;
+  font-size: 3vw;
+  font-family: 'Murs Gothic', sans-serif ;
+  color: #604C37;
+  line-height: 2.5vw;
+  letter-spacing: 0%;
+  margin-bottom: 0;
+}
+
+/* Базовые стили списка */
+.custom-list {
+  margin-top: 4%; /* Отступ сверху */
+  margin-left: 2.5%; /* Отступ между пунктами */
+  padding-left: 50px; /* Отступ для маркеров */
+  line-height: 1.5; /* Межстрочный интервал */
+}
+
+/* Стили пунктов списка */
+.custom-list li {
+  margin-bottom: 2%; /* Отступ между пунктами */
+  position: relative;
+  font-size: 1.7vw;
+  font-family: "Inter regular", sans-serif;
+}
+
+/* Кастомные маркеры (кружки) */
+.custom-list li::marker {
+  color: #604C37; /* Цвет маркера */
+}
+
+#about-left-facts{
+  font-family: 'Murs Gothic', sans-serif ;
+  font-size: 8vw;
+  color: #604C37;
+  opacity: 0.5; /* Значение от 0 (полностью прозрачный) до 1 (непрозрачный) */
+}
+
+.about-right-column {
+  display: flex;
+  flex-direction: column; /* Главная ось вертикальна */
+  flex: 1;
+  order: 2;
+}
+
+#about-right-numbers {  
+  font-family: 'Murs Gothic', sans-serif ;
+  font-size: 8vw;
+  color: #604C37;
+  opacity: 0.5; /* Значение от 0 (полностью прозрачный) до 1 (непрозрачный) */
+  margin-bottom: -1vw;
+}
+
+#about-right-facts{
+  flex: 1;
+  margin-top: 0px;
+  width: 100%;
+  min-height: 550px;
+  max-height: 800px;
+  background: rgba(251, 211, 146, 0.55);
+  border-radius: 30px;
+  margin-bottom: 0;
+    
+}
+#about-right-facts-text{
+    flex: 1;
+    
+}
+
+
+
+/* Основные стили подвала */
+.site-footer {
+  background-color: #f5f5f5;
+  color: #333;
+  padding: 50px 0;
+  font-family: "Inter regular", sans-serif;
+  text-align: center;
+  border-top: 1px solid #e0e0e0;
+}
+
+/* Меню в подвале */
+.footer-menu {
+  margin-bottom: 1.5vw;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 15px 30px;
+}
+
+.footer-menu a {
+  color: #333;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 1.2vw;
+  position: relative;
+  padding: 0 5px;
+}
+
+.footer-menu a:hover {
+  color: #604C37;
+}
+
+/* Информация в подвале */
+.footer-info {
+  font-size: 1.2vw;
+  line-height: 1.6;
+}
+
+.footer-info p {
+  margin: 5px 0;
+  margin-top: 1.5vw;
+}
+
+.email {
+  font-weight: bold;
+  color: #604C37;
+  font-size: 1.2vw;
+  
+}
+
+/* Адаптивность */
+@media (max-width: 600px) {
+  .footer-menu {
+    flex-direction: column;
+    gap: 10px;
   }
   
-.dropdown:hover .dropdown-menu {
-    display: block;
+  .footer-menu a {
+    font-size: 14px;
   }
-  
-.dropdown-item {
-    padding: 10px 15px;
-    display: block;
-    color: #333;
-    font-family: "Inter regular", sans-serif;
-  }
-  
-.dropdown-item:hover {
-    background: #f8f9fa;
-  }
-  
-.dropdown-divider {
-    border-top: 1px solid #eee;
-    margin: 5px 0;
-  }
+}
+
+
+
+
+
+
+
+.narrow-column {
+  width: 45%;
+}
+
+
+#pattern{
+  width: 100%;
+  transform: scaleY(-1);
+}
+
+
+
 
 /*Блоки для раскрытия измеретильных материалов на неведению мыши*/
 .post-container {
@@ -211,4 +560,433 @@
 
 .download-btn:hover {
   background-color: #2e9e8a;
+}
+
+/* Вывод кнопок со скачиванием материалов в столбик без маркеров */
+.materials-list {
+  list-style-type: none; /* Убираем маркеры */
+  padding-left: 0;       /* Убираем отступ */
+}
+
+.materials-list li {
+  margin-bottom: 8px;    /* Добавляем отступ между элементами */
+}
+
+/* Общие стили для формы теста */
+.test-container {
+  max-width: 800px;
+  margin: 30px auto;
+  padding: 25px;
+  background: #f9f9f9;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.test-title {
+  color: #2c3e50;
+  text-align: center;
+  margin-bottom: 25px;
+  font-size: 28px;
+  font-weight: 600;
+}
+
+/* Стили для каждого вопроса */
+.question-block {
+  background: white;
+  padding: 20px;
+  margin-bottom: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  border-left: 4px solid #aedb34;
+}
+
+
+.question-text {
+  font-size: 18px;
+  font-weight: 500;
+  color: #2c3e50;
+  margin-bottom: 15px;
+}
+
+/* Стили для вариантов ответов */
+.answers-list {
+  list-style: none;
+  padding-left: 0;
+}
+
+.answer-item {
+  margin-bottom: 10px;
+  position: relative;
+}
+
+.answer-label {
+  display: block;
+  padding: 12px 15px;
+  background: #f1f5f9;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border: 1px solid #e2e8f0;
+}
+
+.answer-label:hover {
+  background: #e3f2fd;
+  border-color: #3498db;
+}
+
+/* не понимаю, для чего следующие 2*/
+.answer-radio {
+  position: absolute;
+  opacity: 0;
+}
+
+.answer-radio:checked + .answer-label {
+  background: #3498db;
+  color: white;
+  border-color: #3498db;
+}
+
+/* Кнопка отправки */
+.submit-btn {
+  display: block;
+  width: 100%;
+  padding: 14px;
+  background: #aedb34;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.3s;
+  margin-top: 20px;
+}
+
+.submit-btn:hover {
+  background: #81a323;
+}
+
+/* Стили для результата */
+.result-container {
+  text-align: center;
+  padding: 30px;
+}
+
+.result-score {
+  font-size: 24px;
+  color: #2c3e50;
+  margin-bottom: 15px;
+}
+
+.result-text {
+  font-size: 20px;
+  padding: 15px;
+  background: #e8f5e9;
+  border-radius: 8px;
+  color: #27ae60;
+}
+
+/* Основные стили */
+.tests-container {
+  max-width: 800px;
+  margin: 40px auto;
+  padding: 0 20px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Сетка тестов */
+.tests-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Карточка теста */
+.test-card {
+  display: flex;
+  align-items: center;
+  background: white;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+  text-decoration: none;
+  color: #333;
+  /*transition: all 0.3s ease;*/
+  border: 1px solid #e0e0e0;
+  position: relative;
+  overflow: hidden;
+
+  transform: scale(1); /* Добавляем начальное состояние */
+  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94); /* Плавная анимация */
+  will-change: transform; /* Оптимизация анимации */
+  z-index: 1; /* Чтобы увеличенная карточка была поверх других */
+}
+
+.test-card:hover {
+  transform: scale(1.03); /* Увеличение на 3% */
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15); /* Усиленная тень для эффекта "поднятия" */
+  z-index: 2; /* Поднимаем выше других карточек */
+  border-color: rgba(52, 152, 219, 0.5); /* Легкое свечение границы */
+
+  /*transform: translateY(-5px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+  border-color: #3498db;*/
+  transform: perspective(1000px) scale(1.03) translateZ(0);
+  backface-visibility: hidden;
+}
+
+.test-card::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 4px;
+  background: linear-gradient(to bottom, #aedb34, #FBD392);
+  transition: width 0.3s ease;
+}
+
+.test-card:hover::before {
+  width: 6px;
+}
+
+.test-content {
+  flex-grow: 1;
+}
+
+.test-content h3 {
+  margin: 0 0 8px 0;
+  color: #2c3e50;
+  font-size: 1.2rem;
+}
+
+.test-content p {
+  margin: 0;
+  color: #7f8c8d;
+  font-size: 0.9rem;
+  line-height: 1.4;
+}
+
+/*Внеурочная деятельность*/
+.welcome-part-activities{
+  display: flex;          /* Включаем flex-расположение */
+  overflow: hidden;
+  margin-top: 3%;
+  margin-right: 15%;
+  margin-left: 15%;
+}
+
+.welcome-part-activities > div {
+  padding: 30px;
+  display: flex;
+  background: rgba(137, 158, 223, 0.55);
+  border-radius: 30px;
+  min-height: 550px;
+  max-height: 650px;
+}
+
+.welcome-part-activities > div > div {
+  width: 100%;
+  min-height: 250px;
+  max-height: 350px;
+  border-radius: 30px;
+  flex: 1;
+  margin-bottom: 0;
+  margin-left: 3%;
+  margin-top: 12%;
+  margin-right: 5%;
+}
+
+.welcome-part-activities > div > div > p:first-child {
+  font-family: 'Golos Text_Regular', sans-serif ;
+  font-size: 2.3vw;
+  font-weight: bold;
+  line-height: 1.3vw;
+  letter-spacing: 1px;
+  color: rgb(5, 5, 5);
+}
+
+.welcome-part-activities > div > div > p:last-child {
+  margin-top: 10%;
+  font-family: "Golos Text_Regular", sans-serif;
+  font-size: 1.7vw;
+  width: 100%;
+}
+
+.welcome-part-activities img {
+  max-width: 30%;        /* Можно задать нужный размер (например, 30%) */
+  height: auto;          /* Сохраняем пропорции */
+  /*order: 2;  */           /* Перемещает фото вправо (если нужно) */
+  border-radius: 30px;
+  object-fit: cover;
+  display: block;
+}
+
+/* Внеурочная деятельность */
+#left-column-activities {
+  /*background: rgba(142, 230, 110, 0.4); */
+  background: linear-gradient(to right, #91ef7c, #d1efb8);
+}
+
+/* Измерительные материалы */
+#left-column-measuring-materials {
+  background: rgba(199, 164, 225, 0.4); 
+}
+
+/* Уроки */
+#left-column-lessons {
+  background: rgba(230, 195, 142, 0.4); 
+}
+
+/* Советы и рекомендации для родителей */
+#left-column-recommendation {
+  background: rgba(162, 188, 237, 0.4); 
+}
+
+/* Тесты для родителей */
+#left-column-test-list {
+  /*background: rgba(237, 249, 148, 0.4); */
+  background: linear-gradient(to right, #3498db, #ccd6dd);
+}
+
+/* Советы и рекомендации для учеников */
+#left-column-memo {
+  background: rgba(249, 148, 239, 0.4); 
+}
+
+/* Основные стили для математической игры */
+.container {
+  max-width: 800px;
+  margin: 30px auto;
+  padding: 30px;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+  font-family: 'Arial', sans-serif;
+}
+
+.game-title {
+  color: #2c3e50;
+  text-align: center;
+  margin-bottom: 30px;
+  font-size: 28px;
+}
+
+.difficulty-selector {
+  background-color: #f8f9fa;
+  padding: 20px;
+  border-radius: 8px;
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+.difficulty-selector p {
+  margin-bottom: 15px;
+  font-size: 18px;
+  color: #2c3e50;
+}
+
+#difficulty {
+  padding: 8px 15px;
+  border: 1px solid #ced4da;
+  border-radius: 4px;
+  font-size: 16px;
+  margin-right: 10px;
+}
+
+#change-difficulty {
+  padding: 8px 20px;
+  background-color: #3498db;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s;
+}
+
+#change-difficulty:hover {
+  background-color: #2980b9;
+}
+
+.problem {
+  font-size: 36px;
+  text-align: center;
+  margin: 40px 0;
+  color: #2c3e50;
+  font-weight: bold;
+}
+
+#answer-input {
+  display: block;
+  margin: 0 auto 20px;
+  padding: 12px 15px;
+  font-size: 20px;
+  width: 150px;
+  text-align: center;
+  border: 2px solid #3498db;
+  border-radius: 6px;
+}
+
+#check-button {
+  display: block;
+  margin: 0 auto 30px;
+  padding: 12px 30px;
+  background-color: #2ecc71;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 18px;
+  transition: background-color 0.3s;
+}
+
+#check-button:hover {
+  background-color: #27ae60;
+}
+
+#result {
+  background-color: #f8f9fa;
+  padding: 20px;
+  border-radius: 8px;
+  margin-top: 20px;
+  text-align: center;
+}
+
+#result-message {
+  font-size: 20px;
+  margin-bottom: 20px;
+}
+
+#next-button {
+  padding: 10px 25px;
+  background-color: #3498db;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s;
+}
+
+#next-button:hover {
+  background-color: #2980b9;
+}
+
+/* Адаптивность для мобильных устройств */
+@media (max-width: 768px) {
+  .container {
+      padding: 20px;
+      margin: 15px;
+  }
+  
+  .problem {
+      font-size: 28px;
+  }
+  
+  #answer-input {
+      width: 120px;
+      font-size: 18px;
+  }
 }

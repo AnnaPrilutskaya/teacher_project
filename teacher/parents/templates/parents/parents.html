@@ -1,0 +1,13 @@
+{% extends "students/base.html" %}
+
+{% block title%}Для вас, родители!{% endblock %}
+
+{% block content%}
+        <h1>Для вас, родители!</h1>
+        <p>Дорогие родители!</p>
+        
+        <a href="{% url 'recommendation' %}" class="btn btn-warning">Советы и рекомендации</a>
+        <a href="{% url 'test_list' %}" class="btn btn-warning">Тесты</a>
+        
+
+{% endblock %}

@@ -1,20 +1,42 @@
 {% extends "students/base.html" %}
-
+{% load static %}
 
 {% block title%}Внеурочная деятельность{% endblock %}
 
 {% block content%}
-        <h1>Внеурочная деятельность</h1>
-        <p>Какой-то текст</p>
+<div class="welcome-part-activities">
+    <div id = "left-column-activities">
+        <div id = "main-description-activities">
+            <p id="main-header-activities">Внеурочная деятельность</p>
+            <p id = "main-description-activities-text">Проверенные методики и творческие разработки, которые помогут сделать ваши внеклассные мероприятия по-настоящему яркими и полезными для учеников</p>
+        </div>
+        <img id = 'main-photo-activities' src="{% static 'students/img/mamAnyaTest.png' %}" alt="logo">
+    </div>
+    
+</div> 
         {% for el in list_of_activitives%}
-            <div class="alert alert-warning">
-                <h3>{{el.title }}</h3>
-                {% for document in el.text.all %}
-                    <li>
-                        <a href="{{ document.word.url }}" class="btn btn-warning" target="_blank">{{ document.title }}</a>
-                    </li>
-                {% endfor %}
+            <div class="post-container">
+                <div class="post-header">{{el.title}}</div>
+                <div class="post-content">
+                    <div class="post-description">
+                        <p>{{el.content|safe}}</p>
+                        <ul class="materials-list">
+                            {% for document in el.files.all %}
+                                    <li><a href="{{ document.file.url }}" target="_blank" rel="noopener noreferrer" class="download-btn">{{ document.get_original_filename }}</a></li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
             </div>
         {% endfor%}
-        
+
+        <script>
+            // Для плавной работы на мобильных устройствах
+            document.querySelectorAll('.post-header').forEach(header => {
+                header.addEventListener('click', function() {
+                    const content = this.nextElementSibling;
+                    content.style.maxHeight = content.style.maxHeight ? null : content.scrollHeight + 'px';
+                });
+            });
+        </script>   
 {% endblock %}

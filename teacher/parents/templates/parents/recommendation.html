@@ -1,0 +1,41 @@
+{% extends "students/base.html" %}
+{% load static %}
+
+{% block title%}Памятки{% endblock %}
+
+{% block content%}
+<div class="welcome-part-activities">
+    <div id = "left-column-recommendation">
+        <div id = "main-description-recommendation">
+            <p id="main-header-recommendation">Советы и рекомендации</p>
+            <p id = "main-description-recommendation-text">Текст</p>
+        </div>
+        <img id = 'main-photo-recommendation' src="{% static 'students/img/mamAnyaTest.png' %}" alt="logo">
+    </div>
+    
+</div> 
+        {% for el in list_of_recommendations%}
+            <div class="post-container">
+                <div class="post-header">{{el.title}}</div>
+                <div class="post-content">
+                    <div class="post-description">
+                        <p class="header-content"> {{el.content|safe}}</p>
+                        <ul class="materials-list">
+                            {% for file in el.files.all %}
+                                <li><a href="{{ file.file.url }}" target="_blank" rel="noopener noreferrer" class="download-btn">{{ file.get_original_filename }}</a></li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        {% endfor%}
+        <script>
+            // Для плавной работы на мобильных устройствах
+            document.querySelectorAll('.post-header').forEach(header => {
+                header.addEventListener('click', function() {
+                    const content = this.nextElementSibling;
+                    content.style.maxHeight = content.style.maxHeight ? null : content.scrollHeight + 'px';
+                });
+            });
+        </script>
+{% endblock %}

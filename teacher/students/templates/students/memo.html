@@ -1,9 +1,19 @@
 {% extends "students/base.html" %}
+{% load static %}
 
 {% block title%}Памятки{% endblock %}
 
 {% block content%}
-        <h1>Для вас, ребята! Памятки</h1>
+<div class="welcome-part-activities">
+    <div id = "left-column-memo">
+        <div id = "main-description-memo">
+            <p id="main-header-memo">Советы и рекомендации</p>
+            <p id = "main-description-memo-text">Текст</p>
+        </div>
+        <img id = 'main-photo-memo' src="{% static 'students/img/mamAnyaTest.png' %}" alt="logo">
+    </div>
+    
+</div> 
     
         {% for el in list_of_memos%}
             <div class="post-container">

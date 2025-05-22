@@ -1,27 +1,32 @@
 {% extends "students/base.html" %}
+{% load static %}
 
 
 {% block title%}Внеурочная деятельность{% endblock %}
 
 {% block content%}
-        <h1>Измерительные материалы</h1>
-        <p>Я понимаю, что будущее за компетентностным подходом в образовании. Однако  передо мной стоит противоречие - это несоответствие целей компетентностного подхода и оценки конечных результатов. В формировании компетентностей главным является деятельностный подход, а в оценке конечных результатов акцент делается на знания. Деятельностный подход и предполагает использование на уроках технологии проблемного диалога, а, значит, у ребят формируются ключевые компетенции. 
-            Но есть ещё проблема, с которой я сталкиваюсь во время работы – это отсутствие измерителей, тестов для определения уровня формирования ключевых компетентностей у младших школьников. Чтобы отслеживать данный уровень использую личные наработки, методики, рекомендованные психологами, наблюдения. Буду рада, если мои материалы могут кому-то пригодиться ещё, и признательна Вашим советам по данному вопросу
-        </p>
-
-
-
+    <div class="welcome-part-activities">
+        <div id = "left-column-measuring-materials">
+            <div id = "main-description-measuring-materials">
+                <p id="main-header-measuring-materials">Измерительные материалы</p>
+                <p id = "main-description-measuring-materials-text">Личные наработки, методики,
+                    рекомендованные психологами, наблюдения для определения
+                    уровня формирования ключевых компетентностей у младших школьников</p>
+            </div>
+            <img id = 'main-photo-measuring-materials' src="{% static 'students/img/mamAnyaTest.png' %}" alt="logo">
+        </div>
+    </div>
         {% for el in list_of_measuring_materials%}
             <div class="post-container">
                 <div class="post-header">{{el.title}}</div>
                 <div class="post-content">
                     <div class="post-description">
                         <p>{{el.description}}</p>
-                        {% for document in el.materials.all %}
-                            <li>
-                                <a href="{{ document.document.url }}" class="download-btn">{{ document.title }}</a>
-                            </li>
-                        {% endfor %}
+                        <ul class="materials-list">
+                            {% for document in el.files.all %}
+                                <li><a href="{{ document.file.url }}" target="_blank" rel="noopener noreferrer" class="download-btn">{{ document.get_original_filename }}</a></li>
+                            {% endfor %}
+                        </ul>
                     </div>
                 </div>
             </div>

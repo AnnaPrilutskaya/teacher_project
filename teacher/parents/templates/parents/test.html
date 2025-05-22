@@ -1,0 +1,32 @@
+{% extends "students/base.html" %}
+
+{% block title%}Памятки{% endblock %}
+
+{% block content%}
+    <div class="test-container">
+        <h1 class="test-title">{{ test.title }}</h1>
+        <form method="post">
+            {% csrf_token %}
+            {% for question in test.questions.all %}
+                <div class="question-block">
+                    <div class="question-text">{{ question.text }}</div>
+                    <ul class="answers-list">
+                        {% for option in question.options.all %}
+                            <li class="answer-item">
+                                <input type="radio" 
+                                id="option_{{ option.id }}" 
+                                name="question_{{ question.id }}" 
+                                value="{{ option.id }}" 
+                                class="answer-radio">
+                                <label for="option_{{ option.id }}" class="answer-label">
+                                    {{ option.text }}
+                                </label>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            {% endfor %}
+            <button type="submit" class="submit-btn">Отправить</button>
+        </form>
+    </div>
+{% endblock %}

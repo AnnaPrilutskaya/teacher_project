@@ -10,10 +10,62 @@
       <div id = "left-column">
         <p id="main-header">ДАВАЙТЕ УЧИТЬСЯ ВМЕСТЕ!</p>
         <div id = "main-description">
-          <p id = "main-description-text">Я - Светалана Николаевна Прилуцкая, учитель начальных классов. Очень рада видеть Вас на моей странице!</p>
+          <p id = "main-description-text">Я - Светалана Николаевна Прилуцкая, <br>учитель начальных классов.<br>Очень рада видеть Вас на моей странице!</p>
+        </div>
+        <div id = "buttons">
+          <a href="#target-section" id="scroll-button1">Обо мне</a>
+          <a href="#footer-section" id="scroll-button2">Контакты</a>
         </div>
       </div>
       <img id = 'main-photo' src="{% static 'students/img/mamAnyaTest.png' %}" alt="logo">
-
     </div>
+    <div id = "about-description">
+      <p id = "about-description-text">Каждый материал здесь — часть моего педагогического опыта.<br> Берите, адаптируйте, используйте!</p>
+      <img id = 'pattern' src="{% static 'students/img/testBaBaBa.png' %}" alt="logo">
+    </div>
+    <div id = "target-section" class="about-part">
+      <div class="about-left-column">
+        <div id = "about-left-text">
+          <p id = "about-left-years-text-header">30+<br>лет стажа</p>
+          <ul class="custom-list">
+            <li>высшее образование (БГПУ)</li>
+            <li>высшая категория</li>
+          </ul>
+        </div>
+        <div id = "about-left-text">
+          <p id = "about-left-years-text-header">250+<br>выпускников</p>
+          <ul class="custom-list">
+            <li>победители научных конференций и олимпиад</li>
+            <li>участники творческих фестивалей</li>
+          </ul>
+        </div>
+        <p id = "about-left-facts">ФАКТЫ</p>
+      </div>
+      <div class="about-right-column">
+        <p id = "about-right-numbers">ЦИФРЫ</p>
+        <div id = "about-right-facts">
+          <p id = "about-left-years-text-header">работа +<br>результат =<br>признание</p>
+          <ul class="custom-list">
+            <li>призер и дипломант всероссийских конкурсов</li>
+            <li>автор методических статей в профессиональных сборниках и педагогических изданиях</li>
+            <li>спикер конференций и семинаров</li>
+            <li>бобик</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <footer id = "footer-section" class="site-footer">
+      <div class="footer-menu">
+        <a href="#">ОБО МНЕ</a>
+        <a href="#">МАСТЕРСКАЯ УЧИТЕЛЯ</a>
+        <a href="#">ДЛЯ ВАС, РЕБЯТА!</a>
+        <a href="#">ДЛЯ ВАС, РОДИТЕЛИ!</a>
+      </div>
+      
+      <div class="footer-info">
+        <p>© 2023 ПРИЛУЦКАЯ С.Н. | УЧИТЕЛЬ НАЧАЛЬНЫХ КЛАССОВ</p>
+        <p class="email">svetlana.03.74@mail.ru</p>
+      </div>
+    </footer>
+   
 {% endblock %}

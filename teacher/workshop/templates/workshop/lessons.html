@@ -1,12 +1,19 @@
 {% extends "students/base.html" %}
-
+{% load static %}
 
 {% block title%}Уроки{% endblock %}
 
 {% block content%}
-        <h1>Уроки</h1>
-        <p>Описание
-        </p>
+<div class="welcome-part-activities">
+    <div id = "left-column-lessons">
+        <div id = "main-description-lessons">
+            <p id="main-header-lessons">Уроки</p>
+            <p id = "main-description-lessons-text">Проверенные методики и творческие разработки, которые помогут сделать ваши внеклассные мероприятия по-настоящему яркими и полезными для учеников</p>
+        </div>
+        <img id = 'main-photo-lessons' src="{% static 'students/img/mamAnyaTest.png' %}" alt="logo">
+    </div>
+    
+</div> 
 
 
 
@@ -24,11 +31,11 @@
                         <p class="header-content"> <b>Задачи: </b>{{el.tasks}}</p>
                         <p class="header-content"> <b>Оборудование: </b>{{el.equipment}}</p>
                         <p class="header-content"> {{el.content|safe}}</p>
-                        {% for file in el.files.all %}
-                            <li>
-                                <a href="{{ file.file.url }}" class="download-btn">{{ file.get_original_filename }}</a>
-                            </li>
-                        {% endfor %}
+                        <ul class="materials-list">
+                            {% for file in el.files.all %}
+                                <li><a href="{{ file.file.url }}" target="_blank" rel="noopener noreferrer" class="download-btn">{{ file.get_original_filename }}</a></li>
+                            {% endfor %}
+                        </ul>
                     </div>
                 </div>
             </div>

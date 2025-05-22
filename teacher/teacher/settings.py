@@ -33,6 +33,7 @@ ALLOWED_HOSTS = []
 INSTALLED_APPS = [
     'students.apps.StudentsConfig',
     'workshop.apps.WorkshopConfig',
+    'parents.apps.ParentsConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -41,6 +42,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'multiupload',
     'ckeditor',
+    'nested_admin',
 ]
 
 MIDDLEWARE = [
@@ -129,3 +131,4 @@ STATICFILES_DIRS = [os.path.join(BASE_DIR, "static")]
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, "media")
+

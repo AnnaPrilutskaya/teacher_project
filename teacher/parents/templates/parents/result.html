@@ -1,0 +1,13 @@
+{% extends "students/base.html" %}
+
+{% block title%}Памятки{% endblock %}
+
+{% block content%}
+    <div class="test-container">
+        <div class="result-container">
+            <h1 class="test-title">Результат теста "{{ test.title }}"</h1>
+            <div class="result-score">Ваш счёт: {{ total_score }}/20</div>
+            <div class="result-text">Результат: {{ result }} </div>
+        </div>
+    </div>
+{% endblock %}

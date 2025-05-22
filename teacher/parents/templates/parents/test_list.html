@@ -1,0 +1,26 @@
+{% extends "students/base.html" %}
+{% load static %}
+
+{% block title%}Тесты{% endblock %}
+
+{% block content%}
+<div class="welcome-part-activities">
+    <div id = "left-column-test-list">
+        <div id = "main-description-test-list">
+            <p id="main-header-test-list">Тесты</p>
+            <p id = "main-description-test-list-text">Текст</p>
+        </div>
+        <img id = 'main-photo-test-list' src="{% static 'students/img/mamAnyaTest.png' %}" alt="logo">
+    </div>
+    
+</div> 
+    <div class="tests-container">
+        <ul>
+        {% for test in tests %}
+            <div class="tests-grid">
+                <a href="{% url 'test_detail' test.id %}" class="test-card">{{test.title}}</a>
+            </div>
+        {% endfor %}
+        </ul>
+    </div>
+{% endblock %}

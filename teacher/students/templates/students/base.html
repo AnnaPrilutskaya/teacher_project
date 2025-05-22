@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.4.2/css/all.css">
   </head>
   <body>
-    <nav class="navbar navbar-expand-xxl navbar-light bg-light sticky-top">
+    <nav class="navbar navbar-expand-xxl navbar-light sticky-top">
       <div class="container-fluid">
         <a href="{% url 'home' %}" class="navbar-brand">ПРИЛУЦКАЯ СВЕТЛАНА НИКОЛАЕВНА</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -37,18 +37,36 @@
                 </ul>
               </li>
 
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="{% url 'student' %}" id="navbarDropdown" role="button" data-bs-toggle="dropdown">
+                  ДЛЯ ВАС, РЕБЯТА!
+                </a>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="{% url 'memo' %}">СОВЕТЫ И РЕКОМЕНДАЦИИ</a></li>
+                  <li><a class="dropdown-item" href="#">ССЫЛКИ НА ПОЛЕЗНЫЕ САЙТЫ</a></li>
+                  <li><a class="dropdown-item" href="{% url 'math_game' %}">ИГРА</a></li>
+                </ul>
+              </li>
+
+              <li class="nav-item dropdown">
+                <!--<a class="nav-link dropdown-toggle" href="{% url 'parent' %}" id="navbarDropdown" role="button" data-bs-toggle="dropdown">
+                  ДЛЯ ВАС, РОДИТЕЛИ!
+                </a>-->
+                <!-- Отдельная ссылка для перехода -->
+                <a class="nav-link" href="{% url 'parent' %}">
+                  ДЛЯ ВАС, РОДИТЕЛИ!
+                </a>
+                
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="{% url 'recommendation' %}">СОВЕТЫ И РЕКОМЕНДАЦИИ</a></li>
+                  <li><a class="dropdown-item" href="{% url 'test_list' %}">ТЕСТЫ</a></li>
+                  <li><a class="dropdown-item" href="#">ССЫЛКИ НА ПОЛЕЗНЫЕ САЙТЫ</a></li>
+                </ul>
+              </li>
+
               <!--<li class="nav-item">
-                <a href="{% url 'workshop' %}" class="nav-link">МАСТЕРСКАЯ УЧИТЕЛЯ</a>
+                <a href="{% url 'parent' %}" class="nav-link">ДЛЯ ВАС, РОДИТЕЛИ!</a>
               </li>-->
-
-
-
-              <li class="nav-item">
-                <a href="{% url 'student' %}" class="nav-link">ДЛЯ ВАС, РЕБЯТА!</a>
-              </li>
-              <li class="nav-item">
-                <a href="#" class="nav-link">ДЛЯ ВАС, РОДИТЕЛИ!</a>
-              </li>
           </ul>
         </div>
       </div> 
